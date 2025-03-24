@@ -1,0 +1,10 @@
+package random_progs;
+
+public class recur {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

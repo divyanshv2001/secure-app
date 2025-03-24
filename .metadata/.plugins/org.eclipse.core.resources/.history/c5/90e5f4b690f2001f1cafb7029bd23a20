@@ -1,0 +1,59 @@
+package random_progs;
+
+import java.util.ArrayList;
+
+public class recur {
+
+	public static void main(String[] args) {
+//		ArrayList<Integer> y=x(new int[] {1,2,3,4,4,4,5,6,7,8},4,0,new ArrayList<Integer>());
+//		System.out.println(y.toString());
+//		System.out.println(x1(new int[] {1,2,3,4,4,4,5,6,7,8},4,0));
+		int[] ar= {8,9,1,2,3,4,5,6};
+		System.out.println(search(ar,0,ar.length-1,7));
+	}
+	public static ArrayList<Integer> x(int[] a,int t,int i, ArrayList<Integer> list){
+		if(i==a.length) {
+			return list;
+		}
+		if(i!=a.length && a[i]==t) {
+			list.add(i);
+		}
+		return x(a,t,++i,list);
+		
+	}
+	public static ArrayList<Integer> x1(int[] a,int t,int i){
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		if(i==a.length) {
+			return list;
+		}
+		if(a[i]==t) {
+			list.add(i);
+		}
+		ArrayList<Integer> ans=x1(a,t,++i);
+		list.addAll(ans);
+		return list;
+	}
+	public static int search(int[] a,int s,int e, int t) {
+		if(s>e) {
+			return -1;
+		}
+		int m=s+(e-s)/2;
+		if(a[m]==t) {
+			return m;
+		}
+		if(a[s]<=a[m]) {
+			if(a[s]<=t && a[m]>=t) {
+				return search(a,s,m,t);
+			}
+			else {
+				return search(a,m,e,t);
+			}
+		}
+		if(a[s]>a[m]) {
+			if(a[m]<a[e] && t>=a[m] && a[e]<=t) {
+				return search(a,m,e,t);
+			}
+		}
+		return search(a,s,m,t);
+	}
+}

@@ -1,0 +1,35 @@
+package controllers;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import services.AuthService;
+
+public class SignupController {
+    @FXML private TextField txtUsername;
+    @FXML private PasswordField txtPassword;
+
+    private final AuthServices authService = new AuthServices();
+
+    @FXML
+    private void handleSignup(ActionEvent event) {
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+
+        if (authService.registerUser(username, password)) {
+            showAlert("Success", "User registered successfully.");
+        } else {
+            showAlert("Error", "Username already exists.");
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}

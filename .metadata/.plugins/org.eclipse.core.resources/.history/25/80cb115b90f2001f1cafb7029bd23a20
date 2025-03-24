@@ -1,0 +1,34 @@
+package random_progs;
+
+import java.util.ArrayList;
+
+public class recur {
+
+	public static void main(String[] args) {
+		ArrayList<Integer> y=x(new int[] {1,2,3,4,4,4,5,6,7,8},4,0,new ArrayList<Integer>());
+		System.out.println(y.toString());
+		System.out.println(x1(new int[] {1,2,3,4,4,4,5,6,7,8},4,0));
+	}
+	public static ArrayList<Integer> x(int[] a,int t,int i, ArrayList<Integer> list){
+		if(i==a.length) {
+			return list;
+		}
+		if(i!=a.length && a[i]==t) {
+			list.add(i);
+		}
+		return x(a,t,++i,list);
+		
+	}
+	public static ArrayList<Integer> x1(int[] a,int t,int i){
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		if(i==a.length) {
+			return list;
+		}
+		if(a[i]==t) {
+			list.add(i);
+		}
+		ArrayList<Integer> ans=x1(a,t,++i);
+		list.addAll(ans);
+		return list;
+	}
+}

@@ -1,0 +1,6 @@
+services\AuthServices.class
+application\Main.class
+controllers\SignupController.class
+controllers\LoginController.class
+database\DatabaseConnection.class
+security\AESEncryption.class
